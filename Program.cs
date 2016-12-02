@@ -5,23 +5,34 @@ using IWshRuntimeLibrary;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace ScreenCapture
 {
     class Program
     {
+        
         public static void Main()
         {
             // Specify the directory you want to manipulate.
-            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\hello.txt";
+            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Printscreen.png";
 
             try
             {
-                using (FileStream fs = System.IO.File.Create(filePath.AppendTimeStamp()))
+                using (FileStream fs = System.IO.File.Create(filePath))
                 {
-                    Byte[] info = new UTF8Encoding(true).GetBytes("Hello there! I'm your first saved file!");
-                    // Add some information to the file.
-                    fs.Write(info, 0, info.Length);
+                    Bitmap printscreen = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+
+                    Graphics graphics = Graphics.FromImage(printscreen as Image);
+
+                    graphics.CopyFromScreen(0, 0, 0, 0, printscreen.Size);
+
+                    printscreen.Save(filePath.AppendTimeStamp(), ImageFormat.Png);
+
+                    //Byte[] info = new UTF8Encoding(true).GetBytes("Hello there! I'm your first saved file!");
+                    //// Add some information to the file.
+                    //fs.Write(info, 0, info.Length);
                 }
             }
 
