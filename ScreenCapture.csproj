@@ -48,6 +48,7 @@
     </Compile>
     <Compile Include="KeysGrab.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="SCMethod.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
