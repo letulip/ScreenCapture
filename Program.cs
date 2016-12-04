@@ -16,7 +16,7 @@ namespace ScreenCapture
         public static void Main()
         {
             Form SCForm = new Form1();
-            
+            Application.Run(SCForm);
             
             // Specify the directory you want to manipulate.
             //string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Screen shot_screen №Y.png";

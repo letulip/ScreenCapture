@@ -8,13 +8,19 @@ namespace ScreenCapture
         public Form1()
         {
             InitializeComponent();
-            Activate();
             // делаем видимой нашу иконку в трее
             notifyIcon1.Visible = true;
-            ShowInTaskbar = true;
+            ShowInTaskbar = false;
         }
 
-        private void btnScrshot_Click(object sender, EventArgs e)
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (WindowState == FormWindowState.Minimized)
+                Hide();
+        }
+
+
+    private void btnScrshot_Click(object sender, EventArgs e)
         {
             SCMethod.MakeSC();   
         }
@@ -25,11 +31,11 @@ namespace ScreenCapture
             this.Close();
         }
 
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
         {
-            // добавляем Эвент или событие по 2му клику мышки, 
-            //вызывая функцию  notifyIcon1_MouseDoubleClick
-            this.notifyIcon1.MouseDoubleClick += new MouseEventHandler(notifyIcon1_MouseDoubleClick);
+            // добавляем Эвент или событие по 1му клику мышки, 
+            //вызывая функцию  notifyIcon1_MouseClick
+            this.notifyIcon1.MouseClick += new MouseEventHandler(notifyIcon1_MouseClick);
             this.ShowInTaskbar = true;
             WindowState = FormWindowState.Normal;
         }
