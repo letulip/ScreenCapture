@@ -12,11 +12,12 @@ namespace ScreenCapture
 {
     class Program
     {
-
+        
         public static void Main()
         {
+            
             // Specify the directory you want to manipulate.
-            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Screen shot screen №Y.png";
+            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Screen shot_screen №Y.png";
 
             try
             {
