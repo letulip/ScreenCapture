@@ -25,6 +25,9 @@ namespace ScreenCapture
                     graphics.CopyFromScreen(Screen.AllScreens[i].Bounds.X, Screen.AllScreens[i].Bounds.Y, 0, 0, printscreen.Size);
 
                     printscreen.Save(filePath.AppendTimeStamp(i + 1), ImageFormat.Png);
+
+                    printscreen.Dispose();
+                    graphics.Dispose();
                 }
             }
 
