@@ -12,33 +12,29 @@ namespace ScreenCapture
 {
     class Program
     {
-        
+        static public void Program_KeyDown(object sender, KeyEventArgs e)
+        {
+            /* If the 'Alt' and 'PrntScr' keys are pressed, make screenshot. */
+            if (e.Alt && e.KeyCode == Keys.PrintScreen)
+                SCMethod.MakeSC();
+
+            /* If the 'Ctrl' and 'PrntScr' keys are pressed, make screenshot. */
+            if (e.Control && e.KeyCode == Keys.PrintScreen)
+                SCMethod.MakeSC();
+
+            /* If the 'Shift' and 'PrntScr' keys are pressed, make screenshot. */
+            if (e.Shift && e.KeyCode == Keys.PrintScreen)
+                SCMethod.MakeSC();
+
+            /* If 'PrntScr' key is pressed, make screenshot. */
+            if (e.KeyCode == Keys.PrintScreen)
+                SCMethod.MakeSC();
+        }
+
         public static void Main()
         {
             Form SCForm = new Form1();
             Application.Run(SCForm);
-            
-            // Specify the directory you want to manipulate.
-            //string filePath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + @"\Screen shot_screen №Y.png";
-
-            //try
-            //{
-            //    for (int i = 0; i < Screen.AllScreens.Length; i++)
-            //    {
-            //        Bitmap printscreen = new Bitmap(Screen.AllScreens[i].Bounds.Width, Screen.AllScreens[i].Bounds.Height);
-
-            //        Graphics graphics = Graphics.FromImage(printscreen as Image);
-
-            //        graphics.CopyFromScreen(Screen.AllScreens[i].Bounds.X, Screen.AllScreens[i].Bounds.Y, 0, 0, printscreen.Size);
-
-            //        printscreen.Save(filePath.AppendTimeStamp(i+1), ImageFormat.Png);
-            //    }
-            //}
-
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine(ex.ToString());
-            //}
         }
     }
 }
