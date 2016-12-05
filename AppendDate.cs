@@ -12,7 +12,7 @@ namespace ScreenCapture
         public static string AppendTimeStamp(this string fileName, int n)
         {
             string filePath = fileName.Replace("Y", Convert.ToString(n));
-            filePath = filePath.Replace("_", DateTime.Now.ToString(" yyyy-MM-dd HH.mm.ss.fff "));
+            filePath = filePath.Replace("_", DateTime.Now.ToString(" yyyy-MM-dd HH.mm.ss "));
 
             return filePath;
         }
