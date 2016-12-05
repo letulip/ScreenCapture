@@ -5,24 +5,18 @@ using IWshRuntimeLibrary;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Windows.Forms;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.Reflection;
-using System.Threading;
 
 namespace ScreenCapture
 {
     class Program
     {
-
-
         private const int WH_KEYBOARD_LL = 13;
         private const int WM_KEYDOWN = 0x0100;
         private const int WM_KEYUP = 0x101;
         private const int WM_SYSKEYDOWN = 0x104;
         private const int VK_F1 = 0x70;
         private static LowLevelKeyboardProc _proc = HookCallback;
-        private static bool pressed = false;
         public static IntPtr _hookID = IntPtr.Zero;
 
         private static IntPtr SetHook(LowLevelKeyboardProc proc)
@@ -41,33 +35,32 @@ namespace ScreenCapture
             if (nCode >= 0)
             {
                 Keys number = (Keys)Marshal.ReadInt32(lParam);
-                //MessageBox.Show(number.ToString());
+
                 if (number == Keys.PrintScreen)
                 {
-                    if (pressed && wParam == (IntPtr)261 && Keys.Control == Control.ModifierKeys && number == Keys.PrintScreen)
-                    {
-                        // Ctrl+PrintScreen
-                        SCMethod.MakeSC();
-                        pressed = false;
-                    }
-                    if (pressed && wParam == (IntPtr)261 && Keys.Shift == Control.ModifierKeys && number == Keys.PrintScreen)
-                    {
-                        // Shift+PrintScreen
-                        SCMethod.MakeSC();
-                        pressed = false;
-                    }
-                    if (pressed && wParam == (IntPtr)261 && Keys.Alt == Control.ModifierKeys && number == Keys.PrintScreen)
-                    {
-                        // Alt+PrintScreen
-                        SCMethod.MakeSC();
-                        pressed = false;
-                    }
-                    if (pressed && wParam == (IntPtr)257 && number == Keys.PrintScreen)
-                    {
-                        // PrintScreen
-                        SCMethod.MakeSC();
-                        pressed = false;
-                    }
+                    // PrintScreen
+                    SCMethod.MakeSC();
+
+                    //if (Keys.Control == Control.ModifierKeys && number == Keys.PrintScreen)
+                    //{
+                    //    // Ctrl+PrintScreen
+                    //    SCMethod.MakeSC();
+                    //}
+                    //if (Keys.Shift == Control.ModifierKeys && number == Keys.PrintScreen)
+                    //{
+                    //    // Shift+PrintScreen
+                    //    SCMethod.MakeSC();
+                    //}
+                    //if (Keys.Alt == Control.ModifierKeys && number == Keys.PrintScreen)
+                    //{
+                    //    // Alt+PrintScreen
+                    //    SCMethod.MakeSC();
+                    //}
+                    //if (number == Keys.PrintScreen)
+                    //{
+                    //    // PrintScreen
+                    //    SCMethod.MakeSC();
+                    //}
                 }
             }
 
