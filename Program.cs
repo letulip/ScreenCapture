@@ -17,6 +17,7 @@ namespace ScreenCapture
         private const int WM_SYSKEYDOWN = 0x104;
         private const int VK_F1 = 0x70;
         private static LowLevelKeyboardProc _proc = HookCallback;
+        private static bool pressed = true;
         public static IntPtr _hookID = IntPtr.Zero;
 
         private static IntPtr SetHook(LowLevelKeyboardProc proc)
@@ -36,10 +37,11 @@ namespace ScreenCapture
             {
                 Keys number = (Keys)Marshal.ReadInt32(lParam);
 
-                if (number == Keys.PrintScreen)
+                if (pressed && number == Keys.PrintScreen)
                 {
                     // PrintScreen
                     SCMethod.MakeSC();
+                    pressed = false;
 
                     //if (Keys.Control == Control.ModifierKeys && number == Keys.PrintScreen)
                     //{
@@ -62,8 +64,11 @@ namespace ScreenCapture
                     //    SCMethod.MakeSC();
                     //}
                 }
+                else
+                {
+                    pressed = true;
+                }
             }
-
             return CallNextHookEx(IntPtr.Zero, nCode, wParam, lParam);
         }
 
