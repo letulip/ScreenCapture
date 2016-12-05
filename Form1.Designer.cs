@@ -41,7 +41,6 @@
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "ScreenCapture App";
             this.notifyIcon1.Visible = true;
-            //this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             // 
             // btnScrshot
             // 
@@ -52,7 +51,6 @@
             this.btnScrshot.TabIndex = 0;
             this.btnScrshot.Text = "Make Screenshot";
             this.btnScrshot.UseVisualStyleBackColor = true;
-            //this.btnScrshot.Click += new System.EventHandler(this.btnScrshot_Click);
             // 
             // button2
             // 
@@ -63,7 +61,6 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "Close program";
             this.button2.UseVisualStyleBackColor = true;
-            //this.button2.Click += new System.EventHandler(this.btnCloseProgram_Click);
             // 
             // linkLabel1
             // 
@@ -88,7 +85,6 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Form1";
