@@ -2,12 +2,13 @@
 using System.Windows.Forms;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace ScreenCapture
 {
     public static class SCMethod
     {
-
         public static void MakeSC()
         {
             
