@@ -1,4 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 namespace ScreenCapture
@@ -9,9 +15,12 @@ namespace ScreenCapture
         private MenuItem menuItem1;
         private MenuItem menuItem2;
 
+        IniFile INI = new IniFile("config.ini");
+
         public Form1()
         {
             InitializeComponent();
+            
             // делаем видимой нашу иконку в трее
             notifyIcon1.Visible = true;
             notifyIcon1.Text = "ScreenCapture";
@@ -48,6 +57,7 @@ namespace ScreenCapture
             SCMethod.MakeSC();
 
             notifyIcon1.BalloonTipTitle = "Скриншот сохранен на рабочем столе";
+            notifyIcon1.ShowBalloonTip(3000);
         }
 
         private void menuItem2_Click(object Sender, EventArgs e)
@@ -58,6 +68,11 @@ namespace ScreenCapture
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
+        }
+
+        private void auto_read()
+        {
+            
         }
     }
 }
