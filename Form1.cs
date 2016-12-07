@@ -14,6 +14,7 @@ namespace ScreenCapture
         private ContextMenu contextMenu1;
         private MenuItem menuItem1;
         private MenuItem menuItem2;
+        private MenuItem menuItem3;
 
         IniFile INI = new IniFile("config.ini");
 
@@ -32,10 +33,11 @@ namespace ScreenCapture
             this.contextMenu1 = new ContextMenu();
             this.menuItem1 = new MenuItem();
             this.menuItem2 = new MenuItem();
+            this.menuItem3 = new MenuItem();
 
             // Initialize contextMenu1
             this.contextMenu1.MenuItems.AddRange(
-                    new MenuItem[] { this.menuItem1, this.menuItem2 });
+                    new MenuItem[] { this.menuItem1, this.menuItem2, this.menuItem3 });
 
             // Initialize menuItem1
             this.menuItem1.Index = 0;
@@ -44,8 +46,13 @@ namespace ScreenCapture
 
             // Initialize menuItem2
             this.menuItem2.Index = 1;
-            this.menuItem2.Text = "Close program";
+            this.menuItem2.Text = "Options";
             this.menuItem2.Click += new EventHandler(this.menuItem2_Click);
+
+            // Initialize menuItem3
+            this.menuItem3.Index = 2;
+            this.menuItem3.Text = "Close program";
+            this.menuItem3.Click += new EventHandler(this.menuItem3_Click);
 
             // The ContextMenu property sets the menu that will
             // appear when the systray icon is right clicked.
@@ -61,6 +68,11 @@ namespace ScreenCapture
         }
 
         private void menuItem2_Click(object Sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Normal;
+        }
+
+        private void menuItem3_Click(object Sender, EventArgs e)
         {            
             this.Close();
         }
@@ -73,6 +85,16 @@ namespace ScreenCapture
         private void auto_read()
         {
             
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
