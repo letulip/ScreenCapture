@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
+using System.IO;
 
 namespace ScreenCapture
 {
@@ -21,6 +16,7 @@ namespace ScreenCapture
         public Form1()
         {
             InitializeComponent();
+            auto_read();
             
             // делаем видимой нашу иконку в трее
             notifyIcon1.Visible = true;
@@ -85,16 +81,27 @@ namespace ScreenCapture
         private void auto_read()
         {
             
+            if (INI.KeyExists("SettingForm1", "Width"))
+                txtbxHotkey.Text = INI.ReadINI("UserHotKey", "Text");
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            
+            INI.Write("UserHotKey", "Text", txtbxHotkey.Text);
+            MessageBox.Show("Настройки SettingForm1 и Other сохранены", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); // Говорим пользователю, что сохранили текст.
+        }
 
+        private void txtbxHotkey_KeyDown(Object sender, KeyPressEventArgs e)
+        {
+            txtbxHotkey.Text += e.KeyChar;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            txtbxHotkey.Clear();
+            INI.Write("UserHotKey", "Text", Keys.PrintScreen.ToString());
         }
     }
 }
