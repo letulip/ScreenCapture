@@ -23,7 +23,7 @@ namespace ScreenCapture
             notifyIcon1.Text = "ScreenCapture";
             ShowInTaskbar = false;
             notifyIcon1.BalloonTipTitle = "Программа была спрятана";
-            notifyIcon1.BalloonTipText = "Обратите внимание что программа была спрятана в трей и продолжит свою работу.";
+            notifyIcon1.BalloonTipText = "Обратите внимание, что программа была спрятана в трей и продолжит свою работу.";
             notifyIcon1.ShowBalloonTip(5000); // Параметром указываем количество миллисекунд, которое будет показываться подсказка
 
             this.contextMenu1 = new ContextMenu();
